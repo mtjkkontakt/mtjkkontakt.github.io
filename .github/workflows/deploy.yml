@@ -72,3 +72,9 @@ jobs:
       - name: Opublikuj
         id: deployment
         uses: actions/deploy-pages@v5
+        with:
+          # Domyslne 10 minut okazalo sie za malo przy pierwszych publikacjach
+          # na swiezym koncie: GitHub konczyl prace juz po tym, jak akcja
+          # przestawala czekac i raportowala blad. 30 minut daje zapas, a
+          # czerwony krzyzyk zaczyna znowu znaczyc prawdziwy problem.
+          timeout: 1800000
