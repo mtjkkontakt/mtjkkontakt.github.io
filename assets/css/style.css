@@ -198,9 +198,6 @@ img {
 .section--tight {
   padding-block: var(--space-6);
 }
-.section--center {
-  text-align: center;
-}
 
 .stack > * + * { margin-top: var(--space-3); }
 
@@ -224,14 +221,19 @@ img {
   align-items: start;
 }
 
-.split {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-6);
-  flex-wrap: wrap;
+/* Nagłówek sekcji: etykieta, tytuł i akapit wprowadzający — wyśrodkowane.
+   Używane na każdej podstronie, żeby wszystkie sekcje trzymały ten sam rytm.
+   Akapity dostają margines auto, bo mają własne ograniczenie szerokości
+   (max-width w ch) i bez tego przykleiłyby się do lewej krawędzi. */
+.section-head {
+  text-align: center;
 }
-.split--baseline { align-items: baseline; gap: var(--space-3); }
+.section-head > p,
+.section-head .lead,
+.section-head .text-muted {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .actions {
   display: flex;
