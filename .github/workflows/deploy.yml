@@ -1,0 +1,74 @@
+name: Deploy do GitHub Pages
+
+# Strona jest w czystym HTML/CSS/JS — nie ma kroku budowania.
+# Ten workflow bierze zawartość repozytorium i publikuje ją jako GitHub Pages.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # pozwala uruchomić publikację ręcznie z zakładki Actions
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Jedna publikacja naraz. Trwającego wdrożenia nie przerywamy w połowie.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Pobierz repozytorium
+        uses: actions/checkout@v4
+
+      - name: Przygotuj GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Sprawdź, czy nie ma zepsutych odnośników do plików
+        run: |
+          : > missing.txt
+          for f in *.html; do
+            # najpierw wycinamy komentarze HTML (leżą tam gotowe bloki
+            # z przykładowymi nazwami plików, które jeszcze nie istnieją),
+            # potem wyciągamy ścieżki z src="…" i href="…" i pomijamy
+            # adresy zewnętrzne, kotwice (#), mailto: i tel:
+            perl -0777 -pe 's/<!--.*?-->//gs' "$f" \
+              | grep -oE '(src|href)="[^"#][^"]*"' \
+              | sed -E 's/^(src|href)="//; s/"$//' \
+              | grep -vE '^(https?:|mailto:|tel:|//)' \
+              | sed -E 's/#.*$//' \
+              | sort -u > targets.txt || true
+            while IFS= read -r target; do
+              if [ -z "$target" ]; then
+                continue
+              fi
+              if [ ! -e "$target" ]; then
+                echo "::error file=$f::brakujący plik: $target"
+                echo "$f -> $target" >> missing.txt
+              fi
+            done < targets.txt
+          done
+          rm -f targets.txt
+          if [ -s missing.txt ]; then
+            echo "Publikacja przerwana — powyższe pliki nie istnieją w repozytorium."
+            rm -f missing.txt
+            exit 1
+          fi
+          rm -f missing.txt
+          echo "Wszystkie odnośniki wskazują na istniejące pliki."
+
+      - name: Spakuj stronę
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Opublikuj
+        id: deployment
+        uses: actions/deploy-pages@v4

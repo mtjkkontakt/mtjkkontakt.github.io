@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontakt — zapytaj o wycenę | MTJK</title>
+<meta name="description" content="Napisz do MTJK w sprawie nadruków na koszulkach i odzieży reklamowej. E-mail, telefon i formularz — wycena zawsze indywidualna, bez zobowiązań.">
+<link rel="canonical" href="https://mtjk.github.io/kontakt.html">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:site_name" content="MTJK">
+<meta property="og:title" content="Kontakt — zapytaj o wycenę | MTJK">
+<meta property="og:description" content="Napisz kilka słów o tym, czego potrzebujesz — odezwę się z konkretną wyceną.">
+<meta property="og:url" content="https://mtjk.github.io/kontakt.html">
+<meta property="og:image" content="https://mtjk.github.io/assets/img/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&amp;family=Barlow+Condensed:wght@400;600&amp;display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Przejdź do treści</a>
+
+<header class="site-header">
+  <div class="container">
+    <nav class="nav" aria-label="Nawigacja główna">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/img/logo-mjk-white.png" alt="MTJK — strona główna" width="914" height="838">
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Otwórz menu">
+        <span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">O mnie</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="proces.html">Jak pracuję</a>
+        <a href="kontakt.html" aria-current="page">Kontakt</a>
+        <a class="btn btn-primary blueprint" href="kontakt.html">Napisz do mnie</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="container section">
+    <span class="tag tag-accent">Kontakt</span>
+    <h1 style="margin-top: var(--space-3); font-size: clamp(30px, 5vw, 44px);">Napiszmy o Twoim projekcie</h1>
+    <p class="text-muted" style="margin-top: var(--space-2);">Wycenę zawsze robię indywidualnie — napisz kilka słów o tym, co potrzebujesz, a odezwę się z konkretną odpowiedzią.</p>
+  </section>
+
+  <section class="container section" style="padding-top: 0;">
+    <div class="grid contact-grid">
+
+      <!-- Formularz. Strona jest statyczna, więc nie ma serwera przyjmującego
+           dane — skrypt składa wiadomość i otwiera ją w programie pocztowym.
+           Adres, na który idzie wiadomość, siedzi w data-mailto poniżej. -->
+      <form class="card form blueprint" id="contact-form" data-mailto="mtjk.kontakt@gmail.com"
+            action="mailto:mtjk.kontakt@gmail.com" method="post" enctype="text/plain">
+        <div class="form-row">
+          <div class="field">
+            <label for="k-name">Imię i nazwisko</label>
+            <input class="input" id="k-name" name="imie" autocomplete="name" required placeholder="Jak się do Ciebie zwracać?">
+          </div>
+          <div class="field">
+            <label for="k-email">E-mail</label>
+            <input class="input" id="k-email" name="email" type="email" autocomplete="email" required placeholder="twoj@email.pl">
+          </div>
+        </div>
+        <div class="field">
+          <label for="k-topic">Czego potrzebujesz?</label>
+          <input class="input" id="k-topic" name="temat" placeholder="np. 15 bluz z logo firmy">
+        </div>
+        <div class="field">
+          <label for="k-msg">Wiadomość</label>
+          <textarea class="input" id="k-msg" name="wiadomosc" rows="5" required placeholder="Opisz projekt — rodzaj odzieży, liczba sztuk, termin, ewentualnie pomysł na nadruk."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block blueprint">Wyślij zapytanie</button>
+        <p class="form-note">Formularz otworzy Twój program pocztowy z gotową wiadomością. Wolisz napisać sam? <a href="mailto:mtjk.kontakt@gmail.com">mtjk.kontakt@gmail.com</a></p>
+        <p class="form-note" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="contact-list">
+        <div class="card blueprint">
+          <div class="card-kicker">E-mail</div>
+          <div class="card-title" style="font-size: 18px;"><a href="mailto:mtjk.kontakt@gmail.com">mtjk.kontakt@gmail.com</a></div>
+        </div>
+        <div class="card blueprint">
+          <div class="card-kicker">Telefon</div>
+          <div class="card-title" style="font-size: 18px;"><a href="tel:+48519780176">519 780 176</a></div>
+        </div>
+        <div class="card blueprint">
+          <div class="card-kicker">Social media</div>
+          <div class="card-title" style="font-size: 18px;">MTJK – Koszulki i odzież reklamowa</div>
+          <p class="card-body">Znajdziesz mnie na Facebooku pod tą nazwą.</p>
+        </div>
+        <div class="card blueprint">
+          <div class="card-kicker">Cennik</div>
+          <p class="card-body">Wyceniam indywidualnie — napisz, co potrzebujesz, a odpowiem z konkretną kwotą. Przykładową ofertę z ceną znajdziesz <a href="portfolio.html#cennik">w portfolio</a>.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="container site-footer">
+  <span>© 2026 MTJK — nadruki na koszulki i odzież reklamową.</span>
+  <span><a href="mailto:mtjk.kontakt@gmail.com">mtjk.kontakt@gmail.com</a> · <a href="tel:+48519780176">519 780 176</a></span>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# W repozytorium trzymamy końce linii w formacie uniksowym (LF).
+# Bez tego skrypt w workflow GitHub Actions mógłby się wysypać na Linuksie.
+* text=auto eol=lf
+
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.ico  binary
