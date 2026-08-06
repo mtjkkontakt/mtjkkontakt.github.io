@@ -114,6 +114,10 @@ img {
   max-width: 100%;
 }
 
+/* Przeglądarki dają <figure> własny margines 40 px po bokach — bez tego
+   zdjęcia w galerii nie wypełniają swoich kolumn. */
+figure { margin: 0; }
+
 .lead {
   font-size: 17px;
   max-width: 52ch;
@@ -497,6 +501,7 @@ main {
 }
 .frame--hero { aspect-ratio: 4 / 3; }
 .frame--square { aspect-ratio: 1; }
+.frame--portrait { aspect-ratio: 3 / 4; }
 
 /* Wewnętrzny kontener przycina zdjęcie, żeby znaczniki narożników
    (rysowane poza ramką) nie zostały obcięte. */
