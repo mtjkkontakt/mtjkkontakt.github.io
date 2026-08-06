@@ -57,27 +57,39 @@
     <p class="text-muted" style="margin-top: var(--space-2);">Żeby nie było niespodzianek — tak zwykle wygląda zlecenie u mnie, od pierwszej wiadomości do paczki pod drzwiami.</p>
   </section>
 
+  <!-- Oś czasu: kroki idą jeden pod drugim, od 01 do 04. Numery połączone
+       pionową kreską, żeby od razu było widać kolejność. Dodajesz krok?
+       Skopiuj cały <li> i zmień numer — kreska dorysuje się sama, a ostatni
+       krok automatycznie jej nie ma. -->
   <section class="container section" style="padding-top: 0;">
-    <ol class="grid grid--4" style="list-style: none; margin: 0; padding: 0;">
-      <li class="card blueprint">
-        <div class="card-kicker">01</div>
-        <h2 class="card-title">Kontakt i wycena</h2>
-        <p class="card-body">Piszesz do mnie, co potrzebujesz — rodzaj odzieży, liczba sztuk, termin. Odpowiadam z indywidualną wyceną, zwykle w ciągu 1–2 dni.</p>
+    <ol class="timeline">
+      <li class="timeline-step">
+        <div class="timeline-marker">01</div>
+        <div class="card blueprint timeline-card">
+          <h2 class="card-title">Kontakt i wycena</h2>
+          <p class="card-body">Piszesz do mnie, co potrzebujesz — rodzaj odzieży, liczba sztuk, termin. Odpowiadam z indywidualną wyceną, zwykle w ciągu 1–2 dni.</p>
+        </div>
       </li>
-      <li class="card blueprint">
-        <div class="card-kicker">02</div>
-        <h2 class="card-title">Projekt graficzny</h2>
-        <p class="card-body">Przygotowuję nadruk na podstawie Twoich materiałów albo od zera, jeśli nie masz jeszcze gotowej grafiki. Poprawki są w cenie.</p>
+      <li class="timeline-step">
+        <div class="timeline-marker">02</div>
+        <div class="card blueprint timeline-card">
+          <h2 class="card-title">Projekt graficzny</h2>
+          <p class="card-body">Przygotowuję nadruk na podstawie Twoich materiałów albo od zera, jeśli nie masz jeszcze gotowej grafiki. Poprawki są w cenie.</p>
+        </div>
       </li>
-      <li class="card blueprint">
-        <div class="card-kicker">03</div>
-        <h2 class="card-title">Akceptacja projektu</h2>
-        <p class="card-body">Dostajesz podgląd finalnego projektu na wybranej odzieży. Do produkcji ruszamy tylko po Twoim „tak”.</p>
+      <li class="timeline-step">
+        <div class="timeline-marker">03</div>
+        <div class="card blueprint timeline-card">
+          <h2 class="card-title">Akceptacja projektu</h2>
+          <p class="card-body">Dostajesz podgląd finalnego projektu na wybranej odzieży. Do produkcji ruszamy tylko po Twoim „tak”.</p>
+        </div>
       </li>
-      <li class="card blueprint">
-        <div class="card-kicker">04</div>
-        <h2 class="card-title">Produkcja i odbiór</h2>
-        <p class="card-body">Drukuję i pakuję zamówienie. Odbiór osobisty albo wysyłka — informuję na bieżąco, kiedy paczka jest w drodze.</p>
+      <li class="timeline-step">
+        <div class="timeline-marker">04</div>
+        <div class="card blueprint timeline-card">
+          <h2 class="card-title">Produkcja i odbiór</h2>
+          <p class="card-body">Drukuję i pakuję zamówienie. Odbiór osobisty albo wysyłka — informuję na bieżąco, kiedy paczka jest w drodze.</p>
+        </div>
       </li>
     </ol>
   </section>
