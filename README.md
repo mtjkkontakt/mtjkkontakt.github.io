@@ -2,7 +2,7 @@
 
 Statyczna strona-wizytówka (portfolio + oferta) dla działalności zajmującej się
 nadrukami DTF. Publikowana automatycznie na GitHub Pages pod adresem
-**https://mtjk.github.io**.
+**https://mtjkkontakt.github.io**.
 
 Strona jest napisana w czystym HTML, CSS i odrobinie JavaScriptu. Nie ma tu
 żadnego "budowania" projektu, node_modules ani frameworków — pliki, które leżą
@@ -39,10 +39,10 @@ od wcześniejszej wersji z Claude Design nie wymaga serwera.
 
 ## Jak opublikować zmiany
 
-1. Wrzuć zmienione pliki do repozytorium `mtjk.github.io` na GitHubie
+1. Wrzuć zmienione pliki do repozytorium `mtjkkontakt.github.io` na GitHubie
    (gałąź `main`).
 2. Reszta dzieje się sama: zakładka **Actions** pokazuje przebieg publikacji,
-   a po 1–2 minutach zmiany są widoczne pod https://mtjk.github.io.
+   a po 1–2 minutach zmiany są widoczne pod https://mtjkkontakt.github.io.
 
 Jednorazowa konfiguracja na GitHubie (tylko za pierwszym razem):
 **Settings → Pages → Build and deployment → Source: GitHub Actions**.
@@ -108,8 +108,8 @@ Gdy domena będzie kupiona:
 2. U rejestratora domeny ustaw rekordy DNS:
    - cztery rekordy **A** dla `@`: `185.199.108.153`, `185.199.109.153`,
      `185.199.110.153`, `185.199.111.153`
-   - rekord **CNAME** dla `www` wskazujący na `mtjk.github.io`
+   - rekord **CNAME** dla `www` wskazujący na `mtjkkontakt.github.io`
 3. Na GitHubie: **Settings → Pages → Custom domain** — wpisz domenę
    i zaznacz **Enforce HTTPS** (opcja pojawi się po kilkunastu minutach).
-4. Zmień adresy `https://mtjk.github.io` na nową domenę w `sitemap.xml`,
+4. Zmień adresy `https://mtjkkontakt.github.io` na nową domenę w `sitemap.xml`,
    `robots.txt` oraz w znacznikach `canonical` i `og:` w czterech plikach HTML.

@@ -10,7 +10,7 @@ Strona jest wysyłana firmom, klubom i ekipom jako oferta współpracy, więc
 priorytetem jest to, żeby działała niezawodnie i wyglądała wiarygodnie
 (nie amatorsko, nie jak spam).
 
-Hosting: GitHub Pages, repo `mtjk.github.io`, publikacja przez GitHub Actions
+Hosting: GitHub Pages, repo `mtjkkontakt.github.io`, publikacja przez GitHub Actions
 (`.github/workflows/deploy.yml`).
 
 ## Historia — skąd wzięła się ta strona
