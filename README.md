@@ -55,33 +55,47 @@ do plików (zdjęcia, style, skrypty) faktycznie istnieją. Jeśli któregoś br
 publikacja się zatrzyma i pokaże, w którym pliku jest problem — dzięki temu
 na żywo nie pojawi się strona z brakującym zdjęciem.
 
-### Czerwony krzyżyk w zakładce Actions — nie panikuj
+### ⚠ Publikacja na GitHub Pages nie działa (stan na 6 sierpnia 2026)
 
-Stan na 6 sierpnia 2026: każda publikacja kończy się **czerwonym krzyżykiem**
-z komunikatem „Timeout reached", mimo że **strona aktualizuje się poprawnie**,
-zwykle w kilkanaście sekund.
+**Strona stoi zamrożona na wersji z 6 sierpnia, godz. 12:31.** Wszystkie
+późniejsze zmiany są w repozytorium, ale nie trafiają na serwer.
 
-To nie jest błąd w plikach. GitHub na tym koncie nie odsyła potwierdzenia
-zakończenia publikacji — w kółko odpowiada „w kolejce", więc po dziesięciu
-minutach czekania publikator się poddaje i melduje porażkę, choć swoją pracę
-dawno wykonał. Sprawdzone: treść trafiała na serwer 17 sekund po starcie.
+Co ustalono:
 
-Co z tym robić:
+- Wszystkie zapisy publikacji mają status „failure". Utykają na
+  `deployment_queued` i po dziesięciu minutach czekania są przerywane.
+- Jedna jedyna publikacja przeszła — ta o 12:31 — i była wyjątkiem,
+  a nie regułą.
+- Przetestowano **obie** niezależne drogi publikacji: przez GitHub Actions
+  oraz prosto z gałęzi (`Deploy from a branch`). Druga pada w 20 sekund
+  z komunikatem „Page build failed.".
+- Konfiguracja jest poprawna: pliki są w repozytorium, gałąź `main` jest
+  domyślna i dopuszczona przez politykę środowiska, uprawnienia Actions są
+  otwarte, wersje akcji aktualne, adres e-mail konta potwierdzony.
 
-- **Nie sugeruj się kolorem — sprawdzaj samą stronę.** Wejdź na
-  https://mtjkkontakt.github.io i odśwież (Ctrl+F5). Jeśli widzisz swoją
-  zmianę, wszystko zadziałało.
-- To najprawdopodobniej przypadłość świeżo założonego konta i powinna minąć
-  sama w ciągu kilku dni.
-- Jeśli po tygodniu nadal będzie czerwono, napisz na https://support.github.com/:
-  *„Pages deployment stays in `deployment_queued` forever and the deploy action
-  times out, although the site content is published correctly. Repo:
-  mtjkkontakt/mtjkkontakt.github.io"*.
+Skoro zawodzą obie drogi naraz, problem nie leży w plikach ani w ustawieniach
+repozytorium. Wygląda na ograniczenie po stronie GitHuba, prawdopodobnie
+związane ze świeżo założonym kontem.
 
-Uwaga: dopóki tak jest, **czerwony krzyżyk przestał być sygnałem ostrzegawczym**.
-Gdyby coś naprawdę się zepsuło — na przykład brakujące zdjęcie — zobaczysz to
-w kroku „Sprawdź, czy nie ma zepsutych odnośników do plików", który wypada
-wcześniej i wypisuje konkretny plik.
+**Co robić:**
+
+1. **Sprawdź skrzynkę.** GitHub wysyła na adres konta wiadomość „Page build
+   failure" z konkretną przyczyną — znacznie bardziej szczegółową niż to,
+   co widać przez API. To najkrótsza droga do odpowiedzi.
+2. **Napisz do wsparcia** na https://support.github.com/ — treść zgłoszenia:
+   *„GitHub Pages deployments consistently fail on repo
+   mtjkkontakt/mtjkkontakt.github.io. Actions deployments stay in
+   `deployment_queued` and time out; branch-based builds fail immediately with
+   'Page build failed.'. The repository is public, the workflow completes all
+   steps, the account email is verified. Only one deployment ever succeeded."*
+3. **Rozważ inny hosting.** Strona to zwykłe pliki statyczne, więc postawi ją
+   bez żadnych zmian Netlify (https://app.netlify.com/drop — przeciągasz folder)
+   albo Cloudflare Pages. Repozytorium na GitHubie zostaje wtedy jako miejsce
+   pracy i kopia zapasowa.
+
+**Dopóki to trwa, czerwony krzyżyk w zakładce Actions oznacza dokładnie to,
+co oznacza: zmiana nie weszła na stronę.** Po każdej zmianie sprawdzaj samą
+stronę — wejdź na https://mtjkkontakt.github.io i odśwież przez Ctrl+F5.
 
 ---
 
