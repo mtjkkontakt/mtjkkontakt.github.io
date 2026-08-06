@@ -55,6 +55,34 @@ do plików (zdjęcia, style, skrypty) faktycznie istnieją. Jeśli któregoś br
 publikacja się zatrzyma i pokaże, w którym pliku jest problem — dzięki temu
 na żywo nie pojawi się strona z brakującym zdjęciem.
 
+### Czerwony krzyżyk w zakładce Actions — nie panikuj
+
+Stan na 6 sierpnia 2026: każda publikacja kończy się **czerwonym krzyżykiem**
+z komunikatem „Timeout reached", mimo że **strona aktualizuje się poprawnie**,
+zwykle w kilkanaście sekund.
+
+To nie jest błąd w plikach. GitHub na tym koncie nie odsyła potwierdzenia
+zakończenia publikacji — w kółko odpowiada „w kolejce", więc po dziesięciu
+minutach czekania publikator się poddaje i melduje porażkę, choć swoją pracę
+dawno wykonał. Sprawdzone: treść trafiała na serwer 17 sekund po starcie.
+
+Co z tym robić:
+
+- **Nie sugeruj się kolorem — sprawdzaj samą stronę.** Wejdź na
+  https://mtjkkontakt.github.io i odśwież (Ctrl+F5). Jeśli widzisz swoją
+  zmianę, wszystko zadziałało.
+- To najprawdopodobniej przypadłość świeżo założonego konta i powinna minąć
+  sama w ciągu kilku dni.
+- Jeśli po tygodniu nadal będzie czerwono, napisz na https://support.github.com/:
+  *„Pages deployment stays in `deployment_queued` forever and the deploy action
+  times out, although the site content is published correctly. Repo:
+  mtjkkontakt/mtjkkontakt.github.io"*.
+
+Uwaga: dopóki tak jest, **czerwony krzyżyk przestał być sygnałem ostrzegawczym**.
+Gdyby coś naprawdę się zepsuło — na przykład brakujące zdjęcie — zobaczysz to
+w kroku „Sprawdź, czy nie ma zepsutych odnośników do plików", który wypada
+wcześniej i wypisuje konkretny plik.
+
 ---
 
 ## Co trzeba jeszcze sprawdzić / uzupełnić

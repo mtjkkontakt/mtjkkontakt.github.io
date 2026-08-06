@@ -69,12 +69,13 @@ jobs:
         with:
           path: '.'
 
+      # UWAGA (stan na 6 sierpnia 2026): ten krok konczy sie czerwonym
+      # krzyzykiem "Timeout reached", mimo ze strona publikuje sie poprawnie
+      # w kilkanascie sekund. GitHub na tym koncie nie zglasza zakonczenia
+      # publikacji - w kolko odpowiada "deployment_queued". Zmiany trafiaja
+      # na strone mimo czerwonego statusu; sprawdzaj po prostu sama strone.
+      # Jesli po kilku dniach nadal bedzie czerwono, warto napisac do
+      # wsparcia GitHuba. Szczegoly w README.
       - name: Opublikuj
         id: deployment
         uses: actions/deploy-pages@v5
-        with:
-          # Domyslne 10 minut okazalo sie za malo przy pierwszych publikacjach
-          # na swiezym koncie: GitHub konczyl prace juz po tym, jak akcja
-          # przestawala czekac i raportowala blad. 30 minut daje zapas, a
-          # czerwony krzyzyk zaczyna znowu znaczyc prawdziwy problem.
-          timeout: 1800000
