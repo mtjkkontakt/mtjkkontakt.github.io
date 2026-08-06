@@ -113,17 +113,31 @@ wcześniej i wypisuje konkretny plik.
 
 ---
 
-## Formularz kontaktowy — jak działa
+## Kontakt bez formularza — dlaczego tak
 
-GitHub Pages serwuje wyłącznie gotowe pliki, nie ma tam żadnego programu, który
-mógłby odebrać dane z formularza. Dlatego formularz składa treść wiadomości
-i otwiera ją w programie pocztowym osoby, która go wypełniła — dopiero ona
-klika „wyślij".
+Na stronie kontaktowej **nie ma formularza** i jest to świadoma decyzja.
 
-Jeśli kiedyś ma to działać „normalnie" (wiadomość ląduje w skrzynce bez
-otwierania poczty), najprostsza droga to darmowe konto w usłudze typu
-Formspree: wtedy w `kontakt.html` w znaczniku `<form>` wystarczy ustawić
-`action="https://formspree.io/f/TWOJ-ID"` i usunąć atrybut `data-mailto`.
+Pierwsza wersja miała formularz, ale na stronie statycznej nie ma serwera,
+który przyjąłby zgłoszenie — formularz musiał otwierać program pocztowy
+odwiedzającego. Na Windowsie oznaczało to wyskakujący Outlook, w którym część
+osób musi się jeszcze logować. Sporo klientów zwyczajnie by odpadło.
+
+Zamiast tego adres i telefon stoją wprost, dużą czcionką:
+
+- kliknięcie w adres otwiera program pocztowy (na telefonie działa naturalnie),
+- obok jest przycisk **Kopiuj** dla tych, którzy wolą wkleić adres do swojej
+  poczty w przeglądarce,
+- nad nimi jest lista tego, co warto napisać w wiadomości — dzięki temu
+  dostajesz zapytania od razu z komplet informacji do wyceny.
+
+Przycisk „Kopiuj" jest w HTML ukryty i pokazuje go dopiero skrypt, po sprawdzeniu,
+że przeglądarka pozwala na kopiowanie. Jeśli nie pozwala, przycisk nie pojawia
+się wcale, zamiast udawać, że działa.
+
+Gdybyś kiedyś jednak chciał prawdziwy formularz (wiadomość ląduje w skrzynce
+bez otwierania poczty), potrzebny jest pośrednik — np. darmowe Web3Forms albo
+Formspree. Warto wtedy pamiętać, że dane klientów zaczną przechodzić przez
+serwery firmy trzeciej i wypadałoby dopisać o tym zdanie pod formularzem.
 
 ---
 

@@ -51,55 +51,41 @@
   }
 
   /* ---------------------------------------------------------------------
-     Formularz kontaktowy
-     Strona jest statyczna (GitHub Pages) — nie ma serwera, który przyjąłby
-     dane formularza. Skrypt składa więc gotową wiadomość i otwiera ją
-     w programie pocztowym użytkownika.
-     Jeśli kiedyś dojdzie prawdziwa obsługa formularza (np. Formspree),
-     wystarczy ustawić w HTML action="https://..." i usunąć ten blok.
+     Kopiowanie adresu i telefonu
+     Na stronie kontaktowej nie ma formularza — są dane kontaktowe wprost.
+     Kliknięcie w adres otwiera program pocztowy, ale nie każdy tego chce,
+     więc obok stoi przycisk kopiujący do schowka.
+     Przyciski są w HTML ukryte (hidden) i pokazują się dopiero tutaj —
+     bez JavaScriptu albo bez dostępu do schowka nie wyświetlą się wcale,
+     zamiast udawać, że działają.
      --------------------------------------------------------------------- */
-  var form = document.getElementById("contact-form");
+  var copyButtons = document.querySelectorAll(".btn-copy");
+  var canCopy = navigator.clipboard && typeof navigator.clipboard.writeText === "function";
 
-  if (form && form.dataset.mailto) {
-    form.addEventListener("submit", function (e) {
-      if (!form.checkValidity()) return; // przeglądarka pokaże własne komunikaty
-      e.preventDefault();
+  if (copyButtons.length && canCopy) {
+    var status = document.getElementById("copy-status");
+    var resetTimer = null;
 
-      var val = function (id) {
-        var el = document.getElementById(id);
-        return el ? el.value.trim() : "";
-      };
+    Array.prototype.forEach.call(copyButtons, function (btn) {
+      btn.hidden = false;
 
-      var name = val("k-name");
-      var email = val("k-email");
-      var topic = val("k-topic");
-      var msg = val("k-msg");
+      btn.addEventListener("click", function () {
+        navigator.clipboard.writeText(btn.dataset.copy).then(
+          function () {
+            btn.textContent = "Skopiowano";
+            if (status) status.textContent = "Skopiowano do schowka: " + btn.dataset.copy;
 
-      var subject = "Zapytanie ze strony MTJK" + (topic ? " — " + topic : "");
-
-      var body = [
-        "Imię i nazwisko: " + name,
-        "E-mail: " + email,
-        "Czego potrzebuję: " + topic,
-        "",
-        msg
-      ].join("\n");
-
-      window.location.href =
-        "mailto:" +
-        form.dataset.mailto +
-        "?subject=" +
-        encodeURIComponent(subject) +
-        "&body=" +
-        encodeURIComponent(body);
-
-      var status = document.getElementById("form-status");
-      if (status) {
-        status.textContent =
-          "Otwieram Twój program pocztowy z gotową wiadomością. " +
-          "Jeśli nic się nie stało, napisz bezpośrednio na " +
-          form.dataset.mailto + ".";
-      }
+            clearTimeout(resetTimer);
+            resetTimer = setTimeout(function () {
+              btn.textContent = "Kopiuj";
+              if (status) status.textContent = "";
+            }, 3000);
+          },
+          function () {
+            if (status) status.textContent = "Nie udało się skopiować — zaznacz i skopiuj ręcznie.";
+          }
+        );
+      });
     });
   }
 })();

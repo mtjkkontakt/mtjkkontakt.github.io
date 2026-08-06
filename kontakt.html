@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kontakt — zapytaj o wycenę | MTJK</title>
-<meta name="description" content="Napisz do MTJK w sprawie nadruków na koszulkach i odzieży reklamowej. E-mail, telefon i formularz — wycena zawsze indywidualna, bez zobowiązań.">
+<meta name="description" content="Napisz lub zadzwoń do MTJK w sprawie nadruków na koszulkach i odzieży reklamowej. Wycena zawsze indywidualna, bez zobowiązań. Odpowiadam w 1–2 dni.">
 <link rel="canonical" href="https://mtjkkontakt.github.io/kontakt.html">
 
 <meta property="og:type" content="website">
@@ -60,51 +60,62 @@
   <section class="container section" style="padding-top: 0;">
     <div class="grid contact-grid">
 
-      <!-- Formularz. Strona jest statyczna, więc nie ma serwera przyjmującego
-           dane — skrypt składa wiadomość i otwiera ją w programie pocztowym.
-           Adres, na który idzie wiadomość, siedzi w data-mailto poniżej. -->
-      <form class="card form blueprint" id="contact-form" data-mailto="mtjk.kontakt@gmail.com"
-            action="mailto:mtjk.kontakt@gmail.com" method="post" enctype="text/plain">
-        <div class="form-row">
-          <div class="field">
-            <label for="k-name">Imię i nazwisko</label>
-            <input class="input" id="k-name" name="imie" autocomplete="name" required placeholder="Jak się do Ciebie zwracać?">
+      <!-- Bez formularza — świadoma decyzja. Strona statyczna nie ma serwera,
+           który przyjąłby zgłoszenie, a formularz przez pośrednika oznaczałby
+           przekazywanie danych klientów firmie trzeciej. Zamiast tego wprost:
+           adres i telefon, duże i klikalne, plus przycisk kopiowania adresu
+           dla tych, którzy nie chcą otwierać programu pocztowego. -->
+      <div class="card blueprint" style="padding: var(--space-6);">
+        <span class="tag tag-outline">Napisz albo zadzwoń</span>
+        <h2 style="margin-top: var(--space-3); font-size: 24px;">Najszybciej pójdzie mailem</h2>
+        <p class="card-body" style="font-size: 15px;">Żeby od razu odpowiedzieć konkretną kwotą, przyda mi się kilka rzeczy. Napisz w wiadomości:</p>
+
+        <ul class="checklist">
+          <li>rodzaj odzieży — koszulki, bluzy, coś innego</li>
+          <li>ile sztuk i w jakich rozmiarach</li>
+          <li>na kiedy potrzebujesz</li>
+          <li>co ma być na nadruku — masz gotowy projekt czy mam go przygotować</li>
+        </ul>
+
+        <div class="contact-big">
+          <div class="card-kicker">E-mail</div>
+          <div class="contact-row">
+            <a class="contact-value" href="mailto:mtjk.kontakt@gmail.com?subject=Zapytanie%20ze%20strony%20MTJK">mtjk.kontakt@gmail.com</a>
+            <button type="button" class="btn btn-secondary btn-copy" data-copy="mtjk.kontakt@gmail.com" hidden>Kopiuj</button>
           </div>
-          <div class="field">
-            <label for="k-email">E-mail</label>
-            <input class="input" id="k-email" name="email" type="email" autocomplete="email" required placeholder="twoj@email.pl">
+        </div>
+
+        <div class="contact-big">
+          <div class="card-kicker">Telefon</div>
+          <div class="contact-row">
+            <a class="contact-value" href="tel:+48519780176">519 780 176</a>
+            <button type="button" class="btn btn-secondary btn-copy" data-copy="519780176" hidden>Kopiuj</button>
           </div>
         </div>
-        <div class="field">
-          <label for="k-topic">Czego potrzebujesz?</label>
-          <input class="input" id="k-topic" name="temat" placeholder="np. 15 bluz z logo firmy">
-        </div>
-        <div class="field">
-          <label for="k-msg">Wiadomość</label>
-          <textarea class="input" id="k-msg" name="wiadomosc" rows="5" required placeholder="Opisz projekt — rodzaj odzieży, liczba sztuk, termin, ewentualnie pomysł na nadruk."></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block blueprint">Wyślij zapytanie</button>
-        <p class="form-note">Formularz otworzy Twój program pocztowy z gotową wiadomością. Wolisz napisać sam? <a href="mailto:mtjk.kontakt@gmail.com">mtjk.kontakt@gmail.com</a></p>
-        <p class="form-note" id="form-status" role="status" aria-live="polite"></p>
-      </form>
+
+        <p class="contact-note" id="copy-status" role="status" aria-live="polite"></p>
+      </div>
 
       <div class="contact-list">
         <div class="card blueprint">
-          <div class="card-kicker">E-mail</div>
-          <div class="card-title" style="font-size: 18px;"><a href="mailto:mtjk.kontakt@gmail.com">mtjk.kontakt@gmail.com</a></div>
-        </div>
-        <div class="card blueprint">
-          <div class="card-kicker">Telefon</div>
-          <div class="card-title" style="font-size: 18px;"><a href="tel:+48519780176">519 780 176</a></div>
+          <div class="card-kicker">Godziny</div>
+          <div class="card-title" style="font-size: 18px;">Odpisuję w 1–2 dni</div>
+          <p class="card-body">Jeśli sprawa jest pilna, zadzwoń — telefonem załatwimy ją od ręki.</p>
         </div>
         <div class="card blueprint">
           <div class="card-kicker">Social media</div>
+          <!-- Gdy będziesz mieć adres profilu, zamień poniższą linię na:
+               <div class="card-title" style="font-size: 18px;"><a href="TU-WKLEJ-ADRES">MTJK – Koszulki i odzież reklamowa</a></div> -->
           <div class="card-title" style="font-size: 18px;">MTJK – Koszulki i odzież reklamowa</div>
           <p class="card-body">Znajdziesz mnie na Facebooku pod tą nazwą.</p>
         </div>
         <div class="card blueprint">
           <div class="card-kicker">Cennik</div>
           <p class="card-body">Wyceniam indywidualnie — napisz, co potrzebujesz, a odpowiem z konkretną kwotą. Przykładową ofertę z ceną znajdziesz <a href="portfolio.html#cennik">w portfolio</a>.</p>
+        </div>
+        <div class="card blueprint">
+          <div class="card-kicker">Odbiór</div>
+          <p class="card-body">Odbiór osobisty albo wysyłka — ustalamy przy zamówieniu.</p>
         </div>
       </div>
 

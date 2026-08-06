@@ -40,7 +40,7 @@ HTML/CSS. Projekt w Claude Design ma id `9c03d440-8f26-4edc-9923-aa93037bce67`
 - `assets/css/style.css` — jedno źródło wyglądu: tokeny (kolory, odstępy,
   czcionki) przeniesione z design systemu „Industry", potem klasy komponentów.
 - `assets/js/site.js` — tylko dwie rzeczy: zwijane menu na wąskich ekranach
-  i wysyłka formularza przez `mailto:`. Bez bibliotek zewnętrznych.
+  i kopiowanie danych kontaktowych do schowka. Bez bibliotek zewnętrznych.
 - `assets/img/` — zdjęcia. Nie wrzucaj tu plików większych niż ~300 KB;
   większość odbiorców otwiera link z telefonu.
 
@@ -59,8 +59,14 @@ HTML/CSS. Projekt w Claude Design ma id `9c03d440-8f26-4edc-9923-aa93037bce67`
   nadpisać. Układy siatek trzymamy w klasach `.grid--*` w `style.css`.
 - Adres kontaktowy to `mtjk.kontakt@gmail.com` (właściciel podał go zamiast
   `mtjk@gmail.com` z projektu w Claude Design). Występuje w czterech plikach
-  HTML — stopki, karta kontaktu oraz `data-mailto` i `action` w formularzu.
-  Przy ewentualnej podmianie zmień wszystkie wystąpienia naraz.
+  HTML — stopki oraz blok kontaktowy na `kontakt.html`, gdzie siedzi też
+  w `data-copy` przycisku kopiowania. Przy podmianie zmień wszystkie naraz.
+- **Nie przywracaj formularza kontaktowego.** Projekt z Claude Design go miał
+  i pierwsza wersja też, ale na hostingu statycznym musiał otwierać program
+  pocztowy odwiedzającego (na Windowsie: Outlook). Właściciel świadomie wybrał
+  kontakt bezpośredni — adres i telefon wprost, plus przycisk kopiowania.
+  Prawdziwy formularz wymagałby pośrednika i przekazywania danych klientów
+  firmie trzeciej; jeśli temat wróci, najpierw o tym powiedz.
 - Ceny i tabela rozmiarów na `portfolio.html` (55 zł, 100% bawełna, 185–190 g/m²)
   są przepisane z materiału reklamowego właściciela `assets/img/oferta-piotrkow.jpg`.
   Nie zmyślaj cen — jeśli coś ma się zmienić, dopytaj.
