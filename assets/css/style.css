@@ -269,8 +269,10 @@ main {
   text-decoration: none;
   color: inherit;
 }
+/* Plik logo jest przycięty do samego znaku (bez przezroczystego marginesu),
+   więc wysokość poniżej to dokładnie wysokość widocznego znaku. */
 .nav-brand img {
-  height: 64px;
+  height: 96px;
   width: auto;
   object-fit: contain;
 }
@@ -397,6 +399,17 @@ main {
   flex: 1;
 }
 .card-inner { padding: var(--space-3); }
+
+/* Karta w wersji powiększonej — dla kart, które są samodzielną treścią
+   sekcji, a nie drobnym dodatkiem obok czegoś większego. Ta sama skala
+   co kroki na osi czasu, żeby strona trzymała jeden rytm. */
+.card--lg {
+  padding: var(--space-6);
+  gap: var(--space-3);
+}
+.card--lg .card-kicker { font-size: 11px; }
+.card--lg .card-title { font-size: 22px; }
+.card--lg .card-body { font-size: 15px; opacity: 0.85; }
 
 /* --------------------------------------------------------------------------
    7b. Oś czasu ("Jak pracuję") — kroki jeden pod drugim
@@ -682,7 +695,7 @@ main {
   .js .nav-links a:last-child { border-bottom: 0; }
   .js .nav-links .btn { margin-top: var(--space-2); }
 
-  .nav-brand img { height: 48px; }
+  .nav-brand img { height: 68px; }
 }
 
 @media (max-width: 620px) {
