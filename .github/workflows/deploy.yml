@@ -69,13 +69,14 @@ jobs:
         with:
           path: '.'
 
-      # UWAGA (stan na 6 sierpnia 2026): ten krok stale konczy sie bledem
-      # "Timeout reached" - publikacja utyka na "deployment_queued" i po
-      # dziesieciu minutach zostaje przerwana. Zmiany NIE trafiaja wtedy na
-      # strone. Przetestowano tez publikacje prosto z galezi - pada w 20
-      # sekund z komunikatem "Page build failed.". Skoro zawodza obie drogi,
-      # problem nie lezy w tym pliku ani w repozytorium. Szczegoly i co z tym
-      # zrobic - w README, sekcja o publikacji.
+      # UWAGA (stan na 6 sierpnia 2026): ten krok czesto konczy sie bledem
+      # "Timeout reached", ale zmiany i tak trafiaja na strone - GitHub bywa
+      # wolniejszy niz dziesiec minut, ktore ten krok czeka na potwierdzenie,
+      # i dokancza publikacje juz po jego zakonczeniu. Zmierzone: commit
+      # wyslany o 13:35 byl na serwerze o 13:48.
+      # Podnoszenie parametru "timeout" do 30 minut NIE pomoglo - krok i tak
+      # przerywal sie po dziesieciu. Nie probuj tego drugi raz.
+      # Sprawdzaj sama strone po 20-30 minutach, nie kolor w Actions.
       - name: Opublikuj
         id: deployment
         uses: actions/deploy-pages@v5

@@ -55,47 +55,40 @@ do plików (zdjęcia, style, skrypty) faktycznie istnieją. Jeśli któregoś br
 publikacja się zatrzyma i pokaże, w którym pliku jest problem — dzięki temu
 na żywo nie pojawi się strona z brakującym zdjęciem.
 
-### ⚠ Publikacja na GitHub Pages nie działa (stan na 6 sierpnia 2026)
+### Publikacja bywa wolna, a status wprowadza w błąd (stan na 6 sierpnia 2026)
 
-**Strona stoi zamrożona na wersji z 6 sierpnia, godz. 12:31.** Wszystkie
-późniejsze zmiany są w repozytorium, ale nie trafiają na serwer.
+**Zmiany wchodzą na stronę, ale nie od razu — potrafi to zająć od kilku do
+kilkunastu minut.** Zmierzone: commit wysłany o 13:35 był na serwerze o 13:48.
 
-Co ustalono:
+Przy okazji publikacja pokazuje **czerwony krzyżyk, choć się udaje**. Powód:
+publikator czeka na potwierdzenie od GitHuba maksymalnie dziesięć minut, a
+GitHub bywa wolniejszy — publikator melduje wtedy porażkę i kończy, a GitHub
+dokańcza pracę już po nim i wystawia stronę.
 
-- Wszystkie zapisy publikacji mają status „failure". Utykają na
-  `deployment_queued` i po dziesięciu minutach czekania są przerywane.
-- Jedna jedyna publikacja przeszła — ta o 12:31 — i była wyjątkiem,
-  a nie regułą.
-- Przetestowano **obie** niezależne drogi publikacji: przez GitHub Actions
-  oraz prosto z gałęzi (`Deploy from a branch`). Druga pada w 20 sekund
+**Jak to sprawdzać:**
+
+1. Po wysłaniu zmian **odczekaj 20–30 minut**.
+2. Wejdź na https://mtjkkontakt.github.io i odśwież przez **Ctrl+F5**
+   (zwykłe odświeżenie może pokazać starą wersję z pamięci przeglądarki).
+3. Jeśli widzisz swoją zmianę — wszystko zadziałało, niezależnie od koloru
+   w zakładce Actions.
+
+**Czerwony krzyżyk sam w sobie nic nie mówi.** Prawdziwe problemy z plikami
+wyłapuje wcześniejszy krok „Sprawdź, czy nie ma zepsutych odnośników do
+plików" — on wypisuje konkretną nazwę brakującego pliku i zatrzymuje
+publikację, zanim cokolwiek pójdzie na serwer.
+
+Co już próbowano, żeby nie powtarzać:
+
+- Podniesienie limitu czekania z 10 do 30 minut — **nie zadziałało**,
+  publikacja i tak przerywała się po dziesięciu minutach.
+- Publikacja prosto z gałęzi zamiast przez Actions — pada w 20 sekund
   z komunikatem „Page build failed.".
-- Konfiguracja jest poprawna: pliki są w repozytorium, gałąź `main` jest
-  domyślna i dopuszczona przez politykę środowiska, uprawnienia Actions są
-  otwarte, wersje akcji aktualne, adres e-mail konta potwierdzony.
 
-Skoro zawodzą obie drogi naraz, problem nie leży w plikach ani w ustawieniach
-repozytorium. Wygląda na ograniczenie po stronie GitHuba, prawdopodobnie
-związane ze świeżo założonym kontem.
-
-**Co robić:**
-
-1. **Sprawdź skrzynkę.** GitHub wysyła na adres konta wiadomość „Page build
-   failure" z konkretną przyczyną — znacznie bardziej szczegółową niż to,
-   co widać przez API. To najkrótsza droga do odpowiedzi.
-2. **Napisz do wsparcia** na https://support.github.com/ — treść zgłoszenia:
-   *„GitHub Pages deployments consistently fail on repo
-   mtjkkontakt/mtjkkontakt.github.io. Actions deployments stay in
-   `deployment_queued` and time out; branch-based builds fail immediately with
-   'Page build failed.'. The repository is public, the workflow completes all
-   steps, the account email is verified. Only one deployment ever succeeded."*
-3. **Rozważ inny hosting.** Strona to zwykłe pliki statyczne, więc postawi ją
-   bez żadnych zmian Netlify (https://app.netlify.com/drop — przeciągasz folder)
-   albo Cloudflare Pages. Repozytorium na GitHubie zostaje wtedy jako miejsce
-   pracy i kopia zapasowa.
-
-**Dopóki to trwa, czerwony krzyżyk w zakładce Actions oznacza dokładnie to,
-co oznacza: zmiana nie weszła na stronę.** Po każdej zmianie sprawdzaj samą
-stronę — wejdź na https://mtjkkontakt.github.io i odśwież przez Ctrl+F5.
+Jeśli kiedyś zmiany przestaną wchodzić całkiem (odczekane pół godziny i nic),
+to dopiero wtedy jest prawdziwy problem. Wtedy: zgłoszenie na
+https://support.github.com/ albo przeniesienie na inny hosting — strona to
+zwykłe pliki statyczne, więc postawi ją bez żadnych zmian np. Cloudflare Pages.
 
 ---
 
