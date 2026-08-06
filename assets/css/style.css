@@ -557,11 +557,16 @@ main {
   gap: var(--space-4);
   align-content: start;
 }
+/* Odnośniki w kartach muszą być rozpoznawalne jako odnośniki także bez
+   najechania myszą — na telefonie najechania nie ma. Stąd kolor akcentu
+   i podkreślenie od razu, a nie dopiero na hover. */
 .contact-list a {
-  color: inherit;
-  text-decoration: none;
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
-.contact-list a:hover { color: var(--color-accent); }
+.contact-list a:hover { color: var(--color-accent-800); }
 
 /* --------------------------------------------------------------------------
    13. Stopka
