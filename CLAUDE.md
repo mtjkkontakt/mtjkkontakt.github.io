@@ -67,9 +67,16 @@ HTML/CSS. Projekt w Claude Design ma id `9c03d440-8f26-4edc-9923-aa93037bce67`
   kontakt bezpośredni — adres i telefon wprost, plus przycisk kopiowania.
   Prawdziwy formularz wymagałby pośrednika i przekazywania danych klientów
   firmie trzeciej; jeśli temat wróci, najpierw o tym powiedz.
-- Ceny i tabela rozmiarów na `portfolio.html` (55 zł, 100% bawełna, 185–190 g/m²)
-  są przepisane z materiału reklamowego właściciela `assets/img/oferta-piotrkow.jpg`.
-  Nie zmyślaj cen — jeśli coś ma się zmienić, dopytaj.
+- **Na stronie nie ma żadnej konkretnej ceny i to jest świadoma decyzja.**
+  Wcześniej w sekcji „Przykładowa oferta" stało 55 zł, ale właściciel usunął
+  kwotę z grafiki `assets/img/oferta-piotrkow.jpg` (jest tam teraz „...ZŁ"),
+  bo cena zależy od nakładu. W tekście stoi „Cena na zapytanie". Nie wstawiaj
+  żadnej kwoty bez wyraźnego polecenia — i pamiętaj, że cena jest w dwóch
+  miejscach naraz: w tekście i wypalona w grafice. Zmiana jednego bez drugiego
+  robi na stronie sprzeczność.
+- Tabela rozmiarów i specyfikacja (100% bawełna, 185–190 g/m²) są przepisane
+  z tej samej grafiki. Nie zmyślaj takich danych — jeśli coś ma się zmienić,
+  dopytaj.
 
 ## Deployment
 
