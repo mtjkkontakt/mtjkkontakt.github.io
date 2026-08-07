@@ -55,40 +55,39 @@ do plików (zdjęcia, style, skrypty) faktycznie istnieją. Jeśli któregoś br
 publikacja się zatrzyma i pokaże, w którym pliku jest problem — dzięki temu
 na żywo nie pojawi się strona z brakującym zdjęciem.
 
-### Publikacja bywa wolna, a status wprowadza w błąd (stan na 6 sierpnia 2026)
+### Gdy zmiany nie wchodzą na stronę — sprawdź, czy kolejka nie stoi
 
-**Zmiany wchodzą na stronę, ale nie od razu — potrafi to zająć od kilku do
-kilkunastu minut.** Zmierzone: commit wysłany o 13:35 był na serwerze o 13:48.
+Normalnie publikacja trwa **około 20 sekund**. Jeśli po kilku minutach i
+odświeżeniu przez Ctrl+F5 nadal widzisz starą wersję, prawie na pewno
+zakorkowała się kolejka publikacji.
 
-Przy okazji publikacja pokazuje **czerwony krzyżyk, choć się udaje**. Powód:
-publikator czeka na potwierdzenie od GitHuba maksymalnie dziesięć minut, a
-GitHub bywa wolniejszy — publikator melduje wtedy porażkę i kończy, a GitHub
-dokańcza pracę już po nim i wystawia stronę.
+**Co się stało 6 sierpnia 2026** (opis, żeby następnym razem rozpoznać to od
+razu): jeden przebieg zawiesił się w stanie **`waiting`** — czekał na
+zatwierdzenie środowiska `github-pages`, choć środowisko nie miało ustawionych
+żadnych osób zatwierdzających, więc nie było komu i czego zatwierdzić. Wisiał
+tak 13 godzin i **blokował wszystkie kolejne publikacje**, które przez to
+kończyły się po dziesięciu minutach błędem „Timeout reached". Wyglądało to na
+wolne albo zepsute publikowanie, a w rzeczywistości była to jedna zatkana
+kolejka. Po anulowaniu tamtego przebiegu następna publikacja poszła w 21
+sekund i zakończyła się zielonym znaczkiem.
 
-**Jak to sprawdzać:**
+**Jak to naprawić, gdyby się powtórzyło:**
 
-1. Po wysłaniu zmian **odczekaj 20–30 minut**.
-2. Wejdź na https://mtjkkontakt.github.io i odśwież przez **Ctrl+F5**
-   (zwykłe odświeżenie może pokazać starą wersję z pamięci przeglądarki).
-3. Jeśli widzisz swoją zmianę — wszystko zadziałało, niezależnie od koloru
-   w zakładce Actions.
+1. Wejdź na https://github.com/mtjkkontakt/mtjkkontakt.github.io/actions
+2. Znajdź przebieg, który wisi w stanie **Waiting** albo **Queued** dłużej niż
+   kilka minut.
+3. Otwórz go i kliknij **Cancel workflow** (przycisk w prawym górnym rogu).
+4. Wróć na listę, otwórz najnowszy przebieg i kliknij **Re-run all jobs**.
 
-**Czerwony krzyżyk sam w sobie nic nie mówi.** Prawdziwe problemy z plikami
-wyłapuje wcześniejszy krok „Sprawdź, czy nie ma zepsutych odnośników do
-plików" — on wypisuje konkretną nazwę brakującego pliku i zatrzymuje
-publikację, zanim cokolwiek pójdzie na serwer.
+Po tym publikacja powinna przejść w kilkadziesiąt sekund.
 
-Co już próbowano, żeby nie powtarzać:
+**Zwykłe sprawdzanie po zmianie:** odczekaj minutę, wejdź na
+https://mtjkkontakt.github.io i odśwież przez **Ctrl+F5** (zwykłe odświeżenie
+potrafi pokazać starą wersję z pamięci przeglądarki).
 
-- Podniesienie limitu czekania z 10 do 30 minut — **nie zadziałało**,
-  publikacja i tak przerywała się po dziesięciu minutach.
-- Publikacja prosto z gałęzi zamiast przez Actions — pada w 20 sekund
-  z komunikatem „Page build failed.".
-
-Jeśli kiedyś zmiany przestaną wchodzić całkiem (odczekane pół godziny i nic),
-to dopiero wtedy jest prawdziwy problem. Wtedy: zgłoszenie na
-https://support.github.com/ albo przeniesienie na inny hosting — strona to
-zwykłe pliki statyczne, więc postawi ją bez żadnych zmian np. Cloudflare Pages.
+Błędy w samych plikach — na przykład zdjęcie, którego brakuje — wyłapuje krok
+„Sprawdź, czy nie ma zepsutych odnośników do plików". Wypisuje wtedy konkretną
+nazwę pliku i zatrzymuje publikację, zanim cokolwiek pójdzie na serwer.
 
 ---
 

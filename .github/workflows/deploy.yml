@@ -69,14 +69,12 @@ jobs:
         with:
           path: '.'
 
-      # UWAGA (stan na 6 sierpnia 2026): ten krok czesto konczy sie bledem
-      # "Timeout reached", ale zmiany i tak trafiaja na strone - GitHub bywa
-      # wolniejszy niz dziesiec minut, ktore ten krok czeka na potwierdzenie,
-      # i dokancza publikacje juz po jego zakonczeniu. Zmierzone: commit
-      # wyslany o 13:35 byl na serwerze o 13:48.
-      # Podnoszenie parametru "timeout" do 30 minut NIE pomoglo - krok i tak
-      # przerywal sie po dziesieciu. Nie probuj tego drugi raz.
-      # Sprawdzaj sama strone po 20-30 minutach, nie kolor w Actions.
+      # Normalnie ten krok trwa okolo 20 sekund.
+      # Jesli konczy sie bledem "Timeout reached" po dziesieciu minutach, to
+      # zwykle znaczy, ze kolejka publikacji jest zatkana przez wczesniejszy
+      # przebieg wiszacy w stanie "waiting" - trzeba go anulowac recznie.
+      # Opisane w README, sekcja o kolejce publikacji.
+      # Podnoszenie parametru "timeout" nie pomaga - sprawdzone.
       - name: Opublikuj
         id: deployment
         uses: actions/deploy-pages@v5
