@@ -10,3 +10,6 @@ desktop.ini
 # Pliki tymczasowe
 *.tmp
 *~
+
+# Konfiguracja lokalnego podglądu (nie publikujemy)
+.claude/
